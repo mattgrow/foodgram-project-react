@@ -121,7 +121,7 @@ class RecipeMainSerializer(RecipeSimpleSerializer):
             return Favorite.objects.filter(
                 recipe=obj, user=current_user
             ).exists()
-        return pass
+        return False
 
     def get_is_in_shopping_cart(self, obj):
         request = self.context.get('request')
@@ -130,7 +130,7 @@ class RecipeMainSerializer(RecipeSimpleSerializer):
             return Shopping.objects.filter(
                 recipe=obj, user=current_user
             ).exists()
-        return pass
+        return False
 
 
 class RecipeCreateSerializer(RecipeMainSerializer):
