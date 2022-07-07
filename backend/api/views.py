@@ -17,6 +17,7 @@ from .serializers import (FollowSerializer,
                           RecipeMainSerializer, TagSerializer,
                           UserCreateSerializer, UserSerializer)
 
+
 INGREDIENT_POSITION_CART = '{} {} --- {} {}\n'
 SHOP_CART_HEADING = 'Список ингридиентов для похода в магазин\n\n'
 SHOPPING_FILENAME = 'shopping_cart.txt'
