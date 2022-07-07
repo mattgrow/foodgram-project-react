@@ -1,8 +1,8 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer
-
 from rest_framework import serializers
+
 from recipes.models import (Favorite, Follow, Ingredient, Recipe,
                             RecipeIngredientQty, Shopping, Tag)
 from users.models import User
