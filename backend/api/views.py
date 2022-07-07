@@ -5,7 +5,6 @@ from django_filters import rest_framework as filters
 from rest_framework import generics, permissions, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
-
 from recipes.models import (Favorite, Follow, Ingredient, Recipe,
                             RecipeIngredientQty, Shopping, Tag)
 from users.models import User
@@ -16,7 +15,6 @@ from .serializers import (FollowSerializer,
                           IngredientSerializer, RecipeCreateSerializer,
                           RecipeMainSerializer, TagSerializer,
                           UserCreateSerializer, UserSerializer)
-
 
 INGREDIENT_POSITION_CART = '{} {} --- {} {}\n'
 SHOP_CART_HEADING = 'Список ингридиентов для похода в магазин\n\n'
