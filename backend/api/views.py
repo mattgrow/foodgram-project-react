@@ -2,11 +2,11 @@ from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters import rest_framework as filters
+from recipes.models import (Favorite, Follow, Ingredient, Recipe,
+                            RecipeIngredientQty, Shopping, Tag)
 from rest_framework import generics, permissions, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
-from recipes.models import (Favorite, Follow, Ingredient, Recipe,
-                            RecipeIngredientQty, Shopping, Tag)
 from users.models import User
 
 from .filters import IngredientFilter, RecipeFilter
@@ -158,16 +158,16 @@ def subscribe(request, user_id=None):
         author = get_object_or_404(User, id=user_id)
         Follow.objects.create(user=user, author=author)
         return Response(
-                status=status.HTTP_201_CREATED
-            )
+            status=status.HTTP_201_CREATED
+        )
     elif request.method == 'DELETE':
         user = request.user
         author = get_object_or_404(User, id=user_id)
         follow = get_object_or_404(Follow, user=user, author=author)
         follow.delete()
         return Response(
-                status=status.HTTP_204_NO_CONTENT
-            )
+            status=status.HTTP_204_NO_CONTENT
+        )
 
 
 class UserSubscriptionListView(generics.ListAPIView):
