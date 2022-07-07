@@ -11,10 +11,10 @@ from users.models import User
 
 from .filters import IngredientFilter, RecipeFilter
 from .permissions import CurrentUserOrAdminOrReadOnly
-from .serializers import (FollowSerializer,
-                          IngredientSerializer, RecipeCreateSerializer,
-                          RecipeMainSerializer, TagSerializer,
-                          UserCreateSerializer, UserSerializer)
+from .serializers import  (FollowSerializer, IngredientSerializer,
+                          RecipeCreateSerializer, RecipeMainSerializer,
+                          TagSerializer, UserCreateSerializer,
+                          UserSerializer)
 
 INGREDIENT_POSITION_CART = '{} {} --- {} {}\n'
 SHOP_CART_HEADING = 'Список ингридиентов для похода в магазин\n\n'
