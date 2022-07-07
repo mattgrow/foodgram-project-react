@@ -1,8 +1,7 @@
+from api.views import UserSubscriptionListView, UserViewSet, subscribe
 from django.urls import include, path
 from djoser.views import UserViewSet as DjoserUserViewSet
 from rest_framework import routers
-
-from api.views import UserSubscriptionListView, UserViewSet, subscribe
 
 
 router = routers.DefaultRouter()
