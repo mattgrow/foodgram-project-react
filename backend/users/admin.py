@@ -1,5 +1,6 @@
 from django.contrib import admin
 from recipes.models import Favorite, Follow, Ingredient, Recipe, Shopping, Tag
+
 from .models import User
 
 admin.autodiscover()

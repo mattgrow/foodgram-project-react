@@ -3,7 +3,6 @@ from django.urls import include, path
 from djoser.views import UserViewSet as DjoserUserViewSet
 from rest_framework import routers
 
-
 router = routers.DefaultRouter()
 router.register('users', UserViewSet, basename='users')
 urlpatterns = [
