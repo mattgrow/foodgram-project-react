@@ -9,7 +9,7 @@ from rest_framework import fields
 class DecodeImageField(fields.ImageField):
 
     def to_internal_value(self, data):
-        header, data = data.split(';base64,')
+        data = data.split(';base64,')
         decoded_file = base64.b64decode(data)
         file_name = str(uuid.uuid4())[:10]
         file_extension = self.get_file_extension(file_name, decoded_file)

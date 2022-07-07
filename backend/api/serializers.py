@@ -1,11 +1,12 @@
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer
-from rest_framework import serializers
 
+from rest_framework import serializers
 from recipes.models import (Favorite, Follow, Ingredient, Recipe,
                             RecipeIngredientQty, Shopping, Tag)
 from users.models import User
+
 from .fields import DecodeImageField
 
 ERRORS = {
@@ -117,13 +118,19 @@ class RecipeMainSerializer(RecipeSimpleSerializer):
         request = self.context.get('request')
         if request is not None and not request.user.is_anonymous:
             current_user = request.user
-            return Favorite.objects.filter(recipe=obj, user=current_user).exists()
+            return Favorite.objects.filter(
+                recipe=obj, user=current_user
+            ).exists()
+        return pass
 
     def get_is_in_shopping_cart(self, obj):
         request = self.context.get('request')
         if request is not None and not request.user.is_anonymous:
             current_user = request.user
-            return Shopping.objects.filter(recipe=obj, user=current_user).exists()
+            return Shopping.objects.filter(
+                recipe=obj, user=current_user
+            ).exists()
+        return pass
 
 
 class RecipeCreateSerializer(RecipeMainSerializer):
@@ -167,7 +174,7 @@ class RecipeCreateSerializer(RecipeMainSerializer):
             ) for ingredient_data in ingredients_data]
         )
 
-    def add_tags(recipe, tag_list):
+    def add_tags(self, recipe, tag_list):
         for tag in tag_list:
             recipe.tags.add(tag)
         return recipe
