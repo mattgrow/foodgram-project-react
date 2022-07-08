@@ -9,7 +9,7 @@ services:
       - ./.env
 
   frontend:
-    image: mattgrow1989/frontend:v.1.1
+    image: mattgrow1989/frontend:v1.1
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
@@ -19,8 +19,8 @@ services:
     image: mattgrow1989/backend
     restart: always
     volumes:
-      - static_value:/app/static_for_backend/
-      - media_value:/app/media_for_backend/
+      - static_value:/app/static_backend/
+      - media_value:/app/media_backend/
     depends_on:
       - db
     env_file:
