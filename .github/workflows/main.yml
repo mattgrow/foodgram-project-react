@@ -41,7 +41,7 @@ build_and_push_to_docker_hub:
           context: ./backend/
           push: true
           tags: mattgrow1989/backend:latest
-  
+
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
