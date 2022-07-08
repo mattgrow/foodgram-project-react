@@ -10,7 +10,7 @@ services:
       - .env
 
   frontend:
-    image: mattgrow1989/frontend:latest
+    image: mattgrow1989/frontend
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
