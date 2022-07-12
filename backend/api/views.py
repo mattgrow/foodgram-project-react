@@ -155,9 +155,10 @@ def subscribe(request, user_id=None):
     if request.method == 'POST':
         user = request.user
         author = get_object_or_404(User, id=user_id)
-        new_follow = Follow.objects.get_or_create(user=user, author=author)
-        new_follow.save()
+        Follow.objects.get_or_create(user=user, author=author)
+        serializer = FollowSerializer(data=request.data)
         return Response(
+            serializer.data,
             status=status.HTTP_201_CREATED
         )
     elif request.method == 'DELETE':
