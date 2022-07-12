@@ -151,11 +151,11 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 
 @api_view(['POST', 'DELETE'])
 @permission_classes((permissions.IsAuthenticated, ))
-def subscribe(request, user_id):
+def subscribe(request, user_id=None):
     if request.method == 'POST':
         user = request.user
         author = get_object_or_404(User, id=user_id)
-        Follow.objects.create(user=user, author=author)
+        Follow.objects.get_or_create(user=user, author=author)
         return Response(
             status=status.HTTP_201_CREATED
         )
