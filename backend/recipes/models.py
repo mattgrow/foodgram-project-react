@@ -102,7 +102,7 @@ class RecipeIngredientQty(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Ингридиент'
     )
-    amount = models.IntegerField(
+    amount = models.PositiveSmallIntegerField(
         'Количество в рецепте',
     )
 
