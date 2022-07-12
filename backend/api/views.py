@@ -157,6 +157,7 @@ def subscribe(request, user_id=None):
         author = get_object_or_404(User, id=user_id)
         Follow.objects.get_or_create(user=user, author=author)
         return Response(
+            request,
             status=status.HTTP_201_CREATED
         )
     elif request.method == 'DELETE':
