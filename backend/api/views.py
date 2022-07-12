@@ -155,7 +155,7 @@ def subscribe(request, user_id=None):
     if request.method == 'POST':
         user = request.user
         author = get_object_or_404(User, id=user_id)
-        Follow.objects.create(user=user, author=author)
+        Follow.objects.create(user=user, following=author)
         return Response(
             status=status.HTTP_201_CREATED
         )
