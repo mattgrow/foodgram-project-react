@@ -154,9 +154,12 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 def subscribe(request, user_id=None):
     if request.method == 'POST':
         user = request.user
-        author = get_object_or_404(User, id=user_id)
-        Follow.objects.get_or_create(user=user, author=author)
-        serializer = FollowSerializer(data=request.data)
+        subscribe_user = get_object_or_404(User, id=user_id)
+        Follow.objects.get_or_create(user=user, author=subscribe_user)
+        serializer = FollowSerializer(
+            subscribe_user,
+            context={'request': request}
+        )
         return Response(
             serializer.data,
             status=status.HTTP_201_CREATED
